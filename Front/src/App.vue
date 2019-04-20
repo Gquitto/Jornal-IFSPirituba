@@ -1,15 +1,13 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col">
-        <div class="main-page">
+    <article class="row">
+      <section class="col-sm-2"></section>
+      <section class="col main-page">
           <router-view></router-view>
-        </div>
-      </div>
-      <div class="col-sm-2"></div>
-    </div>
+      </section>
+      <section class="col-sm-2"></section>
+    </article>
   </div>
 </template>
 
@@ -27,10 +25,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.main-page{
-  margin-top: 2%;
-}
-
-</style>

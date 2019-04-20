@@ -1,17 +1,17 @@
 <template>
-  <div class="container-fluid">
+  <article class="container-fluid">
     <form>
-      <div class="form-group">
+      <section class="form-group">
         <label for="loginMail">Email:</label>
         <input class="form-control" id="loginMail" type="email" v-model="mail">
-      </div>
-      <div class="form-group">
+        <br>
         <label for="loginPass">Password:</label>
         <input class="form-control" id="loginPass" type="password" v-model="pass">
-      </div>
+      </section>
+
       <button type="button" class="btn btn-primary" @click="submitLogin(mail, pass)">Login</button>
     </form>
-  </div>
+  </article>
 </template>
 
 <script>

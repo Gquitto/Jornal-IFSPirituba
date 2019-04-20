@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+  --ifYellow: #FFDF80;
+}
+
+/* COMPONENTS */
+
+.btn-iformantes:focus {
+  box-shadow: none;
+}
+
+.btn-if1:hover {
+  border-bottom: 2px solid red;
+}
+
+.btn-if2 a{
+  color: red
+}
+
+
+/* GLOBAL */
+
+#app {
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-page{
+  margin-top: 1%;
+}
+
+/* HEADER */
+
+.main-topbar {
+  max-height: 40px;
+  background-color: var(--ifYellow);
+}
+
+.logo {
+  max-height: 40px;
+}
+
+/* HOME */
+
+.card {
+  border: none;
+  background-color: rgba(255, 223, 128, .2);
+}
