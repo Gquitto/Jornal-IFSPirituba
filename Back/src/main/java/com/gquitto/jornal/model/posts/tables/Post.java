@@ -17,7 +17,9 @@ public class Post {
 
     private String body;
 
-    private User writtenBy;
+    private Long createdBy;
+
+    private Long approvedBy;
 
     private String createdOn;
 
@@ -47,12 +49,20 @@ public class Post {
         this.body = body;
     }
 
-    public User getWrittenBy() {
-        return writtenBy;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setWrittenBy(User writtenBy) {
-        this.writtenBy = writtenBy;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getApprovedBy() {
+        return approvedBy;
+    }
+
+    public void setApprovedBy(Long approvedBy) {
+        this.approvedBy = approvedBy;
     }
 
     public String getCreatedOn() {

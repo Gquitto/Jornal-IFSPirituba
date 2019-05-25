@@ -7,9 +7,9 @@
           <hr>
           <p v-if="card.body" class="card-text">{{bodyFormatter(card.body)}}</p>
           <br>
-          <router-link :to="'/post/' + card.id">
+          <!-- <router-link :to="'/post/' + card.id"> -->
             <button class="btn btn-link btn-iformantes">Ler mais</button>
-          </router-link>
+          <!-- </router-link> -->
         </section>
       </section>
       <br>
@@ -22,23 +22,6 @@ export default {
   data() {
     return {
       cards: [
-        {
-          id: 22,
-          title: "O primeiro post",
-          body: "Post exemplo"
-        },
-        {
-          id: 12,
-          title: "O segundo post"
-        },
-        {
-          id: 41,
-          title: "O terceiro post"
-        },
-        {
-          id: 1,
-          title: "O quarto post"
-        }
       ]
     };
   },
@@ -47,6 +30,12 @@ export default {
     bodyFormatter(string) {
       return string.slice(0, 100) + "...";
     }
+  },
+
+  created() {
+    this.$axios.get('http://localhost:8085/api/post/getAll').then((response) => {
+      this.cards = response.data
+    })
   }
 };
 </script>

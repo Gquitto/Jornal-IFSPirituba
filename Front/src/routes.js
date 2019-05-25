@@ -1,6 +1,6 @@
 import Home from './pages/home/Home.vue';
 import Login from './pages/login/Login.vue';
-import SinglePost from './pages/post/SinglePost.vue'
+import NewPost from './pages/posts/NewPost.vue'
 
 export default [
     //Homepage
@@ -8,6 +8,6 @@ export default [
     //Login
     {path: '/login', name: 'login', component: Login},
     //Posts
-    {path: '/post/:id', name: 'single-post', component: SinglePost},
+    {path: '/posts/new', name: 'single-post', component: NewPost},
 
 ]
