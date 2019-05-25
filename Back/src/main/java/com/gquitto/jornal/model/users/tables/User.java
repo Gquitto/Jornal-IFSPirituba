@@ -17,8 +17,6 @@ public class User {
 
     private String password;
 
-    private String bio;
-
 
     public long getId() {
         return id;
@@ -52,11 +50,4 @@ public class User {
         this.password = password;
     }
 
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
 }

@@ -1,7 +1,5 @@
 package com.gquitto.jornal.model.posts.tables;
 
-import com.gquitto.jornal.model.users.tables.User;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
