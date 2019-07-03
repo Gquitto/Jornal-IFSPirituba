@@ -1,6 +1,7 @@
 package com.gquitto.jornal.model.users.dal;
 
 
+import com.gquitto.jornal.model.users.dto.UserDto;
 import com.gquitto.jornal.model.users.tables.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,24 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping(value = "getall")
+    @GetMapping("getAll")
     public List<User> getAll() {
         return userRepository.findAll();
     }
 
-    @PostMapping(value = "newuser")
-    public String createUser(@RequestParam User newUser) {
-        if (!isSuitable(newUser)){
-            return "User cant have empty fields";
+    @GetMapping("auth")
+    public UserDto authUser(@RequestBody String email, String password) {
+        if (email == null || password == null) {
+           return null;
+        }
+
+        return new UserDto(userRepository.getUserByEmailAndPassword(email, password));
+    }
+
+    @PostMapping("newUser")
+    public String createUser(@RequestBody User newUser) {
+        if (!isCreatable(newUser)){
+            return "User cannot have empty fields";
         }else if (userRepository.countAllByEmail(newUser.getEmail()) > 0){
             return "User is already registered";
         }
@@ -31,12 +41,39 @@ public class UserController {
         return "User saved!";
     }
 
-    //Private methods
+    @PutMapping("updateUser")
+    public UserDto updateUser(@RequestBody User user) {
+        if (isNull(user)){
+            return null;
+        }
 
-    private Boolean isSuitable(User user) {
+        return new UserDto(userRepository.save(user));
+    }
+
+    @DeleteMapping("deleteUser")
+    public String deleteUser(@RequestBody Long id) {
+        if (id == null){
+            return "Id cannot be null";
+        }
+
+        userRepository.deleteById(id);
+
+        return "User deleted successfully";
+    }
+
+    //Private methods
+    private Boolean isCreatable(User user) {
         if ((user.getEmail() != null) && (user.getPassword() != null)){
             return true;
         }
+        return false;
+    }
+
+    private Boolean isNull(User user) {
+        if (user == null || user.getEmail() == null || user.getName() == null || user.getRole() == null){
+            return true;
+        }
+
         return false;
     }
 

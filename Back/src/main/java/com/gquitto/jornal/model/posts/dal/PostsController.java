@@ -28,4 +28,22 @@ public class PostsController {
             return null;
         }
     }
+
+    @CrossOrigin
+    @PutMapping("updatePost")
+    public Post updatePost(@RequestBody Post post) {
+        if (post != null && post.getId() != null) {
+            return postRepository.save(post);
+        }else {
+            return null;
+        }
+    }
+
+    @CrossOrigin
+    @DeleteMapping("deletePost")
+    public void deletePost(@RequestBody Long id) {
+        if (id != null) {
+            postRepository.deleteById(id);
+        }
+    }
 }

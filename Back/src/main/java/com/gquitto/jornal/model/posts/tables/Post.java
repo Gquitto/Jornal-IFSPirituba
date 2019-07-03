@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Post {
 
     @Id
-    private long id;
+    private Long id;
 
     private String title;
 
