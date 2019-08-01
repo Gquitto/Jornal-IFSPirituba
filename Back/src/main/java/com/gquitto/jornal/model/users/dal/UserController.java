@@ -20,13 +20,18 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("auth")
-    public UserDto authUser(@RequestBody String email, String password) {
+    public UserDto authUser(@RequestParam String email, @RequestParam String password) {
         if (email == null || password == null) {
            return null;
         }
 
-        return new UserDto(userRepository.getUserByEmailAndPassword(email, password));
+        if (userRepository.countAllByEmail(email) > 1) {
+            return new UserDto(userRepository.getUserByEmailAndPassword(email, password));
+        }
+
+        return null;
     }
 
     @PostMapping("newUser")

@@ -25,10 +25,18 @@ export default {
 
   methods: {
     submitLogin(mail, pass) {
-      console.log(mail, pass);
+      this.$axios.get('http://localhost:8085/api/user/auth', {
+      params: {
+        email: mail,
+        password: pass
+      }
+    })
     }
-  }
+  },
+
 };
+
+
 </script>
 
 <style>
